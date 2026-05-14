@@ -1,26 +1,100 @@
 <%- include("partials/header") %>
-<div class="pt-8 bg-gray-100 rounded-xl text-gray-800">
-    <div id="breadcrumbs" class="-mt-2 flex gap-1 items-center text-xs px-8">
-        <a class="text-gray-700 font-medium" href="/">Keygen Admin</a>
+
+<!-- Navigation Bar -->
+<nav id="breadcrumbs" class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3">
+        <div class="logo-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold text-white">XRComm</h2>
+            <p class="text-sm text-slate-400">GRPC License Admin</p>
+        </div>
     </div>
+    <span class="text-xs font-mono text-slate-500 bg-slate-900/50 px-3 py-1 rounded-full">v1.0 | Keygen</span>
+</nav>
 
-    <h1 class="text-3xl my-4 px-8 flex gap-1 items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-        </svg>
+<!-- Welcome Header -->
+<div class="header-card">
+    <h1>License Management Console</h1>
+    <p class="subtitle">Manage XRComm GRPC product licenses, policies, and customer access</p>
+</div>
 
-        Keygen Admin
-    </h1>
+<!-- Quick Stats / Main Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Products Card -->
+    <a href="/products" class="group">
+        <div class="content-card hover:border-blue-500/50 transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+                <div class="p-3 bg-blue-600/20 rounded-xl group-hover:bg-blue-600/30 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" />
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold text-white">Products</h3>
+                    <p class="text-sm text-slate-400 mt-1">Manage XRComm GRPC product offerings and configurations</p>
+                </div>
+            </div>
+        </div>
+    </a>
 
-
-    <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
-        <div class="px-8 py-4 prose prose-xl">
-            <ul>
-                <li>
-                    <a href="/products">Products</a>
-                </li>
-            </ul>
+    <!-- Help Card -->
+    <div class="content-card">
+        <div class="flex items-start gap-4">
+            <div class="p-3 bg-purple-600/20 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25.75 12m7.5-6.75.75 6.75-6.75.75" />
+                </svg>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-lg font-bold text-white">Getting Started</h3>
+                <p class="text-sm text-slate-400 mt-1">View products, create policies, and issue licenses for your customers</p>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Features Overview -->
+<div class="content-card">
+    <h2>System Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex gap-3">
+            <div class="text-blue-400 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div>
+                <p class="font-semibold text-white">License Generation</p>
+                <p class="text-sm text-slate-400">Create unique license keys for customer activations</p>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="text-blue-400 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div>
+                <p class="font-semibold text-white">Policy Management</p>
+                <p class="text-sm text-slate-400">Configure license terms, duration, and machine limits</p>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="text-blue-400 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div>
+                <p class="font-semibold text-white">Customer Access</p>
+                <p class="text-sm text-slate-400">Track license usage and customer validations</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%- include("partials/footer") %>

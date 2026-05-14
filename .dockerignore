@@ -1,0 +1,10 @@
+.git/
+.gitignore
+node_modules/
+npm-debug.log
+.env*
+.DS_Store
+*.log
+.npm/
+Procfile.dev
+deploy.sh
