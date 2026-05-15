@@ -5,11 +5,11 @@ services:
     build: .
     container_name: xrcomm-license-admin
     ports:
-      - "3000:3000"
+      - "9000:9000"
     command: >
       sh -c 'export SECRET="$${SECRET:-$${SITE_PASSWORD}}"; exec node src/index.js'
     environment:
-      PORT: 3000
+      PORT: 9000
       NODE_ENV: production
       KEYGEN_ACCOUNT_ID: ${KEYGEN_ACCOUNT_ID}
       KEYGEN_ACCOUNT_EMAIL: ${KEYGEN_ACCOUNT_EMAIL}
@@ -25,7 +25,7 @@ services:
       PRODUCT_POLICY_MAPPING: ${PRODUCT_POLICY_MAPPING:-{}}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+    test: ["CMD", "node", "-e", "require('http').get('http://localhost:9000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
       interval: 30s
       timeout: 10s
       retries: 3

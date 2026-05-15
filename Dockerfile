@@ -23,11 +23,11 @@ RUN npm run build
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || 3000), (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+    CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || 9000), (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
 # Use tini to handle signals properly
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Run the application
-EXPOSE 3000
+EXPOSE 9000
 CMD ["node", "src/index.js"]

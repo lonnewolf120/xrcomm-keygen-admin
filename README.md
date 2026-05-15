@@ -60,7 +60,7 @@ SECRET=replace-with-a-long-random-string
 npm run dev
 ```
 
-This runs both the Node server and Tailwind CSS watcher. Visit `http://localhost:3000`
+This runs both the Node server and Tailwind CSS watcher. Visit `http://localhost:9000`
 
 ### 4. Build CSS for Production
 
@@ -80,7 +80,7 @@ cp .env.example .env
 # Start the container
 docker-compose up -d
 
-# Access at http://localhost:3000
+# Access at http://localhost:9000
 ```
 
 ### Build and Run Manually
@@ -91,7 +91,7 @@ docker build -t xrcomm-license-admin .
 
 # Run container
 docker run -d \
-  -p 3000:3000 \
+  -p 9000:9000 \
   -e KEYGEN_BASE_URL=http://keygen:8000 \
   -e KEYGEN_ACCOUNT_ID=your-id \
   -e KEYGEN_ACCOUNT_EMAIL=admin@example.com \
@@ -123,7 +123,7 @@ docker run -d \
 | `SITE_USER` | ✓ | Admin dashboard username |
 | `SITE_PASSWORD` | ✓ | Admin dashboard password |
 | `SECRET` | - | Session signing secret for `express-session` (falls back to `SITE_PASSWORD` if omitted) |
-| `PORT` | - | Server port (default: 3000) |
+| `PORT` | - | Server port (default: 9000) |
 | `NODE_ENV` | - | Environment (development/production) |
 | `POSTMARK_API_KEY` | - | For email license delivery |
 | `POSTMARK_FROM_EMAIL` | - | Sender email for license emails |
