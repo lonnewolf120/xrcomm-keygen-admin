@@ -51,6 +51,7 @@ KEYGEN_ACCOUNT_EMAIL=admin@example.com
 KEYGEN_ACCOUNT_PASSWORD=your-keygen-password
 SITE_USER=admin
 SITE_PASSWORD=your-secure-password
+SECRET=replace-with-a-long-random-string
 ```
 
 ### 3. Start Development Server
@@ -121,6 +122,7 @@ docker run -d \
 | `KEYGEN_ACCOUNT_PASSWORD` | ✓ | Keygen account password |
 | `SITE_USER` | ✓ | Admin dashboard username |
 | `SITE_PASSWORD` | ✓ | Admin dashboard password |
+| `SECRET` | - | Session signing secret for `express-session` (falls back to `SITE_PASSWORD` if omitted) |
 | `PORT` | - | Server port (default: 3000) |
 | `NODE_ENV` | - | Environment (development/production) |
 | `POSTMARK_API_KEY` | - | For email license delivery |

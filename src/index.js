@@ -1,6 +1,14 @@
 import dotenv from "dotenv-extended";
 dotenv.load();
 
+if (!process.env.SECRET) {
+	if (process.env.SITE_PASSWORD) {
+		process.env.SECRET = process.env.SITE_PASSWORD;
+	} else {
+		throw new Error("SECRET or SITE_PASSWORD environment variable is required for sessions");
+	}
+}
+
 import Hummingbird from "@themaximalist/hummingbird.js"
 import * as controllers from "./controllers/index.js";
 import * as middleware from "./middleware.js";

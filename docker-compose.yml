@@ -6,6 +6,8 @@ services:
     container_name: xrcomm-license-admin
     ports:
       - "3000:3000"
+    command: >
+      sh -c 'export SECRET="$${SECRET:-$${SITE_PASSWORD}}"; exec node src/index.js'
     environment:
       PORT: 3000
       NODE_ENV: production
@@ -15,6 +17,7 @@ services:
       KEYGEN_BASE_URL: ${KEYGEN_BASE_URL:-http://localhost:8000}
       SITE_USER: ${SITE_USER:-admin}
       SITE_PASSWORD: ${SITE_PASSWORD:-password}
+      SECRET: ${SECRET:-}
       POSTMARK_API_KEY: ${POSTMARK_API_KEY}
       POSTMARK_FROM_EMAIL: ${POSTMARK_FROM_EMAIL}
       PADDLE_API_KEY: ${PADDLE_API_KEY}
