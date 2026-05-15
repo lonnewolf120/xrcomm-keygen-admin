@@ -1,33 +1,31 @@
-# XRComm GRPC License Admin - Production Docker Image
-FROM node:22-alpine
+FROM dhi/node:22-alpine3.23-dev AS builder
 
 WORKDIR /app
 
-# Install system dependencies
-RUN apk add --no-cache tini
-
-# Copy package files
 COPY package*.json ./
+RUN npm ci
 
-# Install production dependencies only
-RUN npm ci --only=production && npm cache clean --force
+RUN npm audit --audit-level=high || true
+RUN npm audit fix --omit=dev || true
 
-# Copy application code
 COPY src ./src
 COPY views ./views
 COPY public ./public
-COPY tailwind.config.js .
-
-# Build CSS
+COPY tailwind.config.js ./tailwind.config.js
 RUN npm run build
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || 9000), (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+FROM dhi/node:22-alpine3.23 AS runtime
 
-# Use tini to handle signals properly
-ENTRYPOINT ["/sbin/tini", "--"]
+WORKDIR /app
 
-# Run the application
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/views ./views
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/tailwind.config.js ./tailwind.config.js
+
+ENV NODE_ENV=production
+ENV SESSIONS_DIR=/tmp/.sessions
 EXPOSE 9000
+
 CMD ["node", "src/index.js"]

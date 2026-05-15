@@ -5,11 +5,11 @@ services:
     build: .
     container_name: xrcomm-license-admin
     ports:
-      - "3000:3000"
+      - "9000:9000"
     command: >
       sh -c 'export SECRET="$${SECRET:-$${SITE_PASSWORD}}"; exec node src/index.js'
     environment:
-      PORT: 3000
+      PORT: 9000
       NODE_ENV: production
       KEYGEN_ACCOUNT_ID: ${KEYGEN_ACCOUNT_ID}
       KEYGEN_ACCOUNT_EMAIL: ${KEYGEN_ACCOUNT_EMAIL}
