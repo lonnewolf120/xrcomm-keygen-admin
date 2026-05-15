@@ -1,6 +1,8 @@
-FROM dhi/node:22-alpine3.23-dev AS builder
+FROM node:22.22.3-alpine3.23 AS builder
 
 WORKDIR /app
+
+RUN apk upgrade --no-cache
 
 COPY package*.json ./
 RUN npm ci
@@ -14,9 +16,11 @@ COPY public ./public
 COPY tailwind.config.js ./tailwind.config.js
 RUN npm run build
 
-FROM dhi/node:22-alpine3.23 AS runtime
+FROM node:22.22.3-alpine3.23 AS runtime
 
 WORKDIR /app
+
+RUN apk upgrade --no-cache
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/src ./src
