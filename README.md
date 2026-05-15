@@ -45,7 +45,10 @@ cp .env.example .env
 Edit `.env` with your Keygen instance details:
 
 ```env
-KEYGEN_BASE_URL=http://localhost:8000
+# If running this admin panel in Docker and Keygen is on your host machine,
+# use host.docker.internal instead of localhost or a host LAN IP.
+# If host.docker.internal is unresolved, add `extra_hosts: ["host.docker.internal:host-gateway"]` in docker-compose.yml.
+KEYGEN_BASE_URL=http://host.docker.internal:8000
 KEYGEN_ACCOUNT_ID=your-account-id
 KEYGEN_ACCOUNT_EMAIL=admin@example.com
 KEYGEN_ACCOUNT_PASSWORD=your-keygen-password
@@ -92,7 +95,7 @@ docker build -t xrcomm-license-admin .
 # Run container
 docker run -d \
   -p 9000:9000 \
-  -e KEYGEN_BASE_URL=http://keygen:8000 \
+  -e KEYGEN_BASE_URL=http://host.docker.internal:8000 \
   -e KEYGEN_ACCOUNT_ID=your-id \
   -e KEYGEN_ACCOUNT_EMAIL=admin@example.com \
   -e KEYGEN_ACCOUNT_PASSWORD=password \

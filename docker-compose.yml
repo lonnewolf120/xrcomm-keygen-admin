@@ -14,7 +14,7 @@ services:
       KEYGEN_ACCOUNT_ID: ${KEYGEN_ACCOUNT_ID}
       KEYGEN_ACCOUNT_EMAIL: ${KEYGEN_ACCOUNT_EMAIL}
       KEYGEN_ACCOUNT_PASSWORD: ${KEYGEN_ACCOUNT_PASSWORD}
-      KEYGEN_BASE_URL: ${KEYGEN_BASE_URL:-http://localhost:8000}
+      KEYGEN_BASE_URL: ${KEYGEN_BASE_URL:-http://host.docker.internal:8000}
       SITE_USER: ${SITE_USER:-admin}
       SITE_PASSWORD: ${SITE_PASSWORD:-password}
       SECRET: ${SECRET:-}
@@ -23,6 +23,8 @@ services:
       PADDLE_API_KEY: ${PADDLE_API_KEY}
       PADDLE_WEBHOOK_SECRET: ${PADDLE_WEBHOOK_SECRET}
       PRODUCT_POLICY_MAPPING: ${PRODUCT_POLICY_MAPPING:-{}}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:9000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
